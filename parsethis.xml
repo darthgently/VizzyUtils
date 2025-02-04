@@ -1,0 +1,1434 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Program name="parsethis">
+  <Variables>
+    <Variable name="Var0" number="0" />
+    <Variable name="Var1" number="0" />
+    <Variable name="craftname" number="0" />
+    <Variable name="planetname" number="0" />
+    <Variable name="MyList">
+      <Items />
+    </Variable>
+  </Variables>
+  <Instructions>
+    <CustomInstruction callFormat="MyCustInstr (0) (1) cust instr txt" format="MyCustInstr |parm0| |parm1| cust instr txt" name="MyCustInstr" id="0" style="custom-instruction" pos="-575.834,-172.3393" />
+    <LogFlight id="1" style="flightlog">
+      <StringOp op="join" style="join">
+        <Variable list="false" local="true" variableName="parm0" />
+        <Variable list="false" local="true" variableName="parm1" />
+        <Constant text="" />
+      </StringOp>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+  </Instructions>
+  <Instructions>
+    <Event event="ReceiveMessage" id="2" style="receive-msg" pos="-542.1392,-9632.259">
+      <Constant canReplace="false" text="message" />
+    </Event>
+    <LogFlight id="3" style="flightlog">
+      <Variable list="false" local="true" variableName="data" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+  </Instructions>
+  <Instructions>
+    <Event event="Docked" id="4" style="craft-docked" pos="-592.3997,-9071.992" />
+    <LogFlight id="5" style="flightlog">
+      <Constant text="on docked" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+  </Instructions>
+  <Instructions>
+    <Event event="ChangeSoi" id="6" style="change-soi" pos="-592.0515,-9179.185" />
+    <LogFlight id="7" style="flightlog">
+      <Constant text="on enter soi" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+  </Instructions>
+  <Instructions>
+    <Event event="PartCollision" id="8" style="part-collision" pos="-728.7899,-8735.714" />
+    <LogFlight id="9" style="flightlog">
+      <StringOp op="join" style="join">
+        <Variable list="false" local="true" variableName="part" />
+        <Constant text=" collided with " />
+        <Variable list="false" local="true" variableName="other" />
+        <Constant text=" at " />
+        <Variable list="false" local="true" variableName="velocity" />
+        <Constant text="" />
+      </StringOp>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+  </Instructions>
+  <Instructions>
+    <Event event="PartExplode" id="10" style="part-explode" pos="-622.7195,-8881.072" />
+    <LogFlight id="11" style="flightlog">
+      <StringOp op="join" style="join">
+        <Variable list="false" local="true" variableName="part" />
+        <Constant text=" EXPLODED!" />
+        <Constant text="" />
+      </StringOp>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+  </Instructions>
+  <Instructions>
+    <Event event="FlightStart" id="12" style="flight-start" pos="-1661.806,227.7589" />
+    <Comment id="13" style="comment">
+      <Constant style="comment-text" canReplace="false" text="This is the comment text" />
+    </Comment>
+    <UserInput id="14" style="user-input">
+      <Variable list="false" local="false" variableName="planetname" />
+      <Constant text="blah" />
+    </UserInput>
+    <SetTarget id="15" style="set-target">
+      <Constant text="Ali Pad" />
+    </SetTarget>
+    <WaitSeconds id="16" style="wait-seconds">
+      <Constant text="0.05" />
+    </WaitSeconds>
+    <WaitUntil id="17" style="wait-until">
+      <Comparison op="g" style="op-gt">
+        <CallCustomExpression call="TimeSinceLaunch" style="call-custom-expression" />
+        <Constant text="0.25" />
+      </Comparison>
+    </WaitUntil>
+    <Repeat id="18" style="repeat">
+      <Constant text="2" />
+      <Instructions>
+        <SetVariable id="19" style="set-variable">
+          <Variable list="false" local="false" variableName="Var0" />
+          <BinaryOp op="+" style="op-add">
+            <CallCustomExpression call="TimeSinceLaunch" style="call-custom-expression" />
+            <Constant text="-0.5" />
+          </BinaryOp>
+        </SetVariable>
+        <ChangeVariable id="20" style="change-variable">
+          <Variable list="false" local="false" variableName="Var0" />
+          <Constant text="-0.01" />
+        </ChangeVariable>
+        <While id="21" style="while">
+          <Comparison op="l" style="op-lt">
+            <BinaryOp op="-" style="op-sub">
+              <CallCustomExpression call="TimeSinceLaunch" style="call-custom-expression" />
+              <Variable list="false" local="false" variableName="Var0" />
+            </BinaryOp>
+            <MathFunction function="floor" style="op-math">
+              <Constant text="1.124" />
+            </MathFunction>
+          </Comparison>
+          <Instructions>
+            <For var="i" id="22" style="for">
+              <Constant text="1" />
+              <Constant text="5" />
+              <MathFunction function="abs" style="op-math">
+                <Constant text="-1" />
+              </MathFunction>
+              <Instructions>
+                <If id="23" style="if">
+                  <Comparison op="ge" style="op-gte">
+                    <BinaryOp op="rand" style="op-rand">
+                      <Constant number="0" />
+                      <BinaryOp op="*" style="op-mul">
+                        <Constant text="0.5" />
+                        <Constant text="2" />
+                      </BinaryOp>
+                    </BinaryOp>
+                    <BinaryOp op="min" style="op-min">
+                      <Constant text="0.52" />
+                      <BinaryOp op="rand" style="op-rand">
+                        <Constant text="0.48" />
+                        <Constant text="0.54" />
+                      </BinaryOp>
+                    </BinaryOp>
+                  </Comparison>
+                  <Instructions>
+                    <DisplayMessage id="24" style="display">
+                      <Constant text="IF" />
+                      <Constant number="7" />
+                    </DisplayMessage>
+                    <LogMessage id="25" style="log">
+                      <BinaryOp op="/" style="op-div">
+                        <CallCustomExpression call="TimeSinceLaunch" style="call-custom-expression" />
+                        <MathFunction function="ceiling" style="op-math">
+                          <Constant text="1.55" />
+                        </MathFunction>
+                      </BinaryOp>
+                    </LogMessage>
+                  </Instructions>
+                </If>
+                <ElseIf id="26" style="else-if">
+                  <BoolOp op="and" style="op-and">
+                    <Constant style="true" bool="true" />
+                    <Comparison op="le" style="op-lte">
+                      <BinaryOp op="rand" style="op-rand">
+                        <Constant number="0" />
+                        <MathFunction function="round" style="op-math">
+                          <Constant text="10.25" />
+                        </MathFunction>
+                      </BinaryOp>
+                      <BinaryOp op="max" style="op-max">
+                        <BinaryOp op="%" style="op-mod">
+                          <CallCustomExpression call="TimeSinceLaunch" style="call-custom-expression" />
+                          <Constant text="5" />
+                        </BinaryOp>
+                        <Constant text="2.5" />
+                      </BinaryOp>
+                    </Comparison>
+                  </BoolOp>
+                  <Instructions>
+                    <DisplayMessage id="27" style="display">
+                      <StringOp op="join" style="join">
+                        <Constant text="ELSEIF " />
+                        <Not style="op-not">
+                          <Comparison op="l" style="op-lt">
+                            <MathFunction function="sqrt" style="op-math">
+                              <BinaryOp op="*" style="op-mul">
+                                <Variable list="false" local="true" variableName="i" />
+                                <Constant text="5" />
+                              </BinaryOp>
+                            </MathFunction>
+                            <Constant text="4" />
+                          </Comparison>
+                        </Not>
+                        <BinaryOp op="atan2" style="op-atan-2">
+                          <Constant text="1" />
+                          <Constant text="1" />
+                        </BinaryOp>
+                        <MathFunction function="cos" style="op-math">
+                          <Constant text="45" />
+                        </MathFunction>
+                        <MathFunction function="tan" style="op-math">
+                          <Constant text="45" />
+                        </MathFunction>
+                        <MathFunction function="asin" style="op-math">
+                          <Constant text="0.707" />
+                        </MathFunction>
+                        <MathFunction function="acos" style="op-math">
+                          <Constant text="0.707" />
+                        </MathFunction>
+                        <MathFunction function="atan" style="op-math">
+                          <Constant number="0" />
+                        </MathFunction>
+                        <MathFunction function="ln" style="op-math">
+                          <Constant text="1" />
+                        </MathFunction>
+                        <MathFunction function="log" style="op-math">
+                          <Constant text="1" />
+                        </MathFunction>
+                        <MathFunction function="deg2rad" style="op-math">
+                          <Constant text="180" />
+                        </MathFunction>
+                        <MathFunction function="rad2deg" style="op-math">
+                          <Constant text="3.1415927" />
+                        </MathFunction>
+                        <Constant text="" />
+                      </StringOp>
+                      <Constant number="7" />
+                    </DisplayMessage>
+                    <LogFlight id="28" style="flightlog">
+                      <BinaryOp op="^" style="op-exp">
+                        <MathFunction function="sin" style="op-math">
+                          <Constant text="45" />
+                        </MathFunction>
+                        <Variable list="false" local="true" variableName="i" />
+                      </BinaryOp>
+                      <Constant style="true" bool="true" />
+                    </LogFlight>
+                  </Instructions>
+                </ElseIf>
+                <ElseIf id="29" style="else">
+                  <Constant bool="true" />
+                  <Instructions>
+                    <DisplayMessage id="30" style="display">
+                      <BinaryOp op="atan2" style="op-atan-2">
+                        <Variable list="false" local="true" variableName="i" />
+                        <Conditional style="conditional">
+                          <Constant style="true" bool="true" />
+                          <BinaryOp op="%" style="op-mod">
+                            <Variable list="false" local="false" variableName="Var0" />
+                            <Constant text="6" />
+                          </BinaryOp>
+                          <StringOp op="length" style="length">
+                            <Constant text="FOO" />
+                          </StringOp>
+                        </Conditional>
+                      </BinaryOp>
+                      <Constant number="7" />
+                    </DisplayMessage>
+                    <Break id="31" style="break" />
+                  </Instructions>
+                </ElseIf>
+              </Instructions>
+            </For>
+          </Instructions>
+        </While>
+      </Instructions>
+    </Repeat>
+    <LogFlight id="32" style="flightlog">
+      <StringOp op="join" style="join">
+        <StringOp op="letter" style="letter">
+          <Constant number="1" />
+          <Constant text="ALPHA" />
+        </StringOp>
+        <StringOp op="substring" style="substring">
+          <Constant number="2" />
+          <Constant number="4" />
+          <Constant text="OMEGA" />
+        </StringOp>
+        <StringOp op="contains" style="contains">
+          <Constant text="alpha" />
+          <Constant text="a" />
+        </StringOp>
+        <Constant text="" />
+      </StringOp>
+      <Constant style="true" bool="true" />
+    </LogFlight>
+    <LogFlight id="33" style="flightlog">
+      <StringOp op="format" style="format">
+        <Constant text="{0:n1}" />
+        <Constant text="10000.99" />
+        <Constant text="" />
+      </StringOp>
+      <Constant style="true" bool="true" />
+    </LogFlight>
+    <LogFlight id="34" style="flightlog">
+      <StringOp op="friendly" subOp="velocity" style="friendly">
+        <CraftProperty property="Vel.OrbitVelocity" style="prop-velocity" />
+      </StringOp>
+      <Constant style="true" bool="true" />
+    </LogFlight>
+    <SetVariable id="35" style="set-variable">
+      <Variable list="false" local="false" variableName="Var0" />
+      <Vector style="vec">
+        <Constant text="1" />
+        <Constant text="2" />
+        <Constant text="3" />
+      </Vector>
+    </SetVariable>
+    <LogFlight id="36" style="flightlog">
+      <StringOp op="join" style="join">
+        <VectorOp op="x" style="vec-op-1">
+          <Variable list="false" local="false" variableName="Var0" />
+        </VectorOp>
+        <VectorOp op="y" style="vec-op-1">
+          <Variable list="false" local="false" variableName="Var0" />
+        </VectorOp>
+        <VectorOp op="z" style="vec-op-1">
+          <Variable list="false" local="false" variableName="Var0" />
+        </VectorOp>
+        <Constant text="" />
+      </StringOp>
+      <Constant style="true" bool="true" />
+    </LogFlight>
+    <LogFlight id="37" style="flightlog">
+      <VectorOp op="length" style="vec-op-1">
+        <Variable list="false" local="false" variableName="Var0" />
+      </VectorOp>
+      <BoolOp op="or" style="op-or">
+        <Not style="op-not">
+          <Constant style="false" bool="false" />
+        </Not>
+        <Constant style="true" bool="true" />
+      </BoolOp>
+    </LogFlight>
+    <LogFlight id="38" style="flightlog">
+      <VectorOp op="norm" style="vec-op-1">
+        <Variable list="false" local="false" variableName="Var0" />
+      </VectorOp>
+      <Constant style="true" bool="true" />
+    </LogFlight>
+    <SetVariable id="39" style="set-variable">
+      <Variable list="false" local="false" variableName="Var1" />
+      <Vector style="vec">
+        <Constant text="6" />
+        <Constant text="7" />
+        <Constant text="8" />
+      </Vector>
+    </SetVariable>
+    <LogFlight id="40" style="flightlog">
+      <VectorOp op="angle" style="vec-op-2">
+        <Variable list="false" local="false" variableName="Var0" />
+        <Variable list="false" local="false" variableName="Var1" />
+      </VectorOp>
+      <Constant style="true" bool="true" />
+    </LogFlight>
+    <LogFlight id="41" style="flightlog">
+      <VectorOp op="clamp" style="vec-op-2">
+        <Variable list="false" local="false" variableName="Var0" />
+        <Variable list="false" local="false" variableName="Var1" />
+      </VectorOp>
+      <Constant style="true" bool="true" />
+    </LogFlight>
+    <LogFlight id="42" style="flightlog">
+      <VectorOp op="cross" style="vec-op-2">
+        <Variable list="false" local="false" variableName="Var0" />
+        <Variable list="false" local="false" variableName="Var1" />
+      </VectorOp>
+      <Constant style="true" bool="true" />
+    </LogFlight>
+    <LogFlight id="43" style="flightlog">
+      <VectorOp op="dot" style="vec-op-2">
+        <Variable list="false" local="false" variableName="Var0" />
+        <Variable list="false" local="false" variableName="Var1" />
+      </VectorOp>
+      <Constant style="true" bool="true" />
+    </LogFlight>
+    <LogFlight id="44" style="flightlog">
+      <VectorOp op="dist" style="vec-op-2">
+        <Variable list="false" local="false" variableName="Var0" />
+        <Variable list="false" local="false" variableName="Var1" />
+      </VectorOp>
+      <Constant style="true" bool="true" />
+    </LogFlight>
+    <LogFlight id="45" style="flightlog">
+      <VectorOp op="min" style="vec-op-2">
+        <Variable list="false" local="false" variableName="Var0" />
+        <Variable list="false" local="false" variableName="Var1" />
+      </VectorOp>
+      <Constant style="true" bool="true" />
+    </LogFlight>
+    <LogFlight id="46" style="flightlog">
+      <VectorOp op="max" style="vec-op-2">
+        <Variable list="false" local="false" variableName="Var0" />
+        <Variable list="false" local="false" variableName="Var1" />
+      </VectorOp>
+      <Constant style="true" bool="true" />
+    </LogFlight>
+    <LogFlight id="47" style="flightlog">
+      <VectorOp op="project" style="vec-op-2">
+        <Variable list="false" local="false" variableName="Var0" />
+        <Variable list="false" local="false" variableName="Var1" />
+      </VectorOp>
+      <Constant style="true" bool="true" />
+    </LogFlight>
+    <LogFlight id="48" style="flightlog">
+      <VectorOp op="scale" style="vec-op-2">
+        <Variable list="false" local="false" variableName="Var0" />
+        <Variable list="false" local="false" variableName="Var1" />
+      </VectorOp>
+      <Constant style="true" bool="true" />
+    </LogFlight>
+    <SetVariable id="49" style="set-variable">
+      <Variable list="false" local="false" variableName="Var1" />
+      <CraftProperty property="Nav.Position" style="prop-nav" />
+    </SetVariable>
+    <LogFlight id="50" style="flightlog">
+      <EvaluateExpression style="evaluate-expression">
+        <Constant text="(FD.CurrentMass+FD.FuelMass)/pi" />
+      </EvaluateExpression>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="51" style="flightlog">
+      <CraftProperty property="Altitude.AGL" style="prop-altitude" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="52" style="flightlog">
+      <CraftProperty property="Altitude.ASL" style="prop-altitude" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="53" style="flightlog">
+      <StringOp op="friendly" subOp="acceleration" style="friendly">
+        <CraftProperty property="Vel.Acceleration" style="prop-velocity" pos="-1310.451,-1718.814" />
+      </StringOp>
+      <Constant style="false" pos="-1069.919,-1726.137" bool="false" />
+    </LogFlight>
+    <LogFlight id="54" style="flightlog">
+      <StringOp op="friendly" subOp="angularvelocity" style="friendly">
+        <CraftProperty property="Vel.AngularVelocity" style="prop-velocity" pos="-1261.038,-1773.489" />
+      </StringOp>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="55" style="flightlog">
+      <StringOp op="friendly" subOp="coordinate" style="friendly">
+        <Planet op="toLatLongAgl" style="planet-to-lat-long-agl" pos="-1309.69,-1816.371">
+          <CraftProperty property="Nav.Position" style="prop-nav" pos="-1232.015,-1826.983" />
+        </Planet>
+      </StringOp>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="56" style="flightlog">
+      <StringOp op="friendly" subOp="density" style="friendly">
+        <CraftProperty property="Atmosphere.AirDensity" style="prop-atmosphere" pos="-1324.57,-1869.215" />
+      </StringOp>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="57" style="flightlog">
+      <StringOp op="friendly" subOp="distance" style="friendly">
+        <CraftProperty property="Altitude.ASF" style="prop-altitude" />
+      </StringOp>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="58" style="flightlog">
+      <StringOp op="friendly" subOp="energy" style="friendly">
+        <Constant text="1" />
+      </StringOp>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="59" style="flightlog">
+      <StringOp op="friendly" subOp="force" style="friendly">
+        <CraftProperty property="Performance.MaxActiveEngineThrust" style="prop-performance" pos="-1369.021,-2019.752" />
+      </StringOp>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="60" style="flightlog">
+      <StringOp op="friendly" subOp="isp" style="friendly">
+        <CraftProperty property="Performance.CurrentIsp" style="prop-performance" pos="-1264.911,-2053.343" />
+      </StringOp>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="61" style="flightlog">
+      <StringOp op="friendly" subOp="mass" style="friendly">
+        <CraftProperty property="Performance.Mass" style="prop-performance" pos="-1371.516,-2107.652" />
+      </StringOp>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="62" style="flightlog">
+      <StringOp op="friendly" subOp="power" style="friendly">
+        <Constant text="1" />
+      </StringOp>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="63" style="flightlog">
+      <StringOp op="friendly" subOp="pressure" style="friendly">
+        <CraftProperty property="Atmosphere.AirPressure" style="prop-atmosphere" pos="-1332.28,-2193.623" />
+      </StringOp>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="64" style="flightlog">
+      <StringOp op="friendly" subOp="temperature" style="friendly">
+        <CraftProperty property="Atmosphere.Temperature" style="prop-atmosphere" pos="-1302.314,-2243.834" />
+      </StringOp>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="65" style="flightlog" pos="-1635.774,-2508.959">
+      <StringOp op="friendly" subOp="time" style="friendly">
+        <CraftProperty property="Time.TimeSinceLaunch" style="prop-time" pos="-1375.01,-2331.843" />
+      </StringOp>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="66" style="flightlog">
+      <StringOp op="friendly" subOp="date" style="friendly">
+        <CraftProperty property="Time.TimeSinceLaunch" style="prop-time" pos="-1301.52,-2378.053" />
+      </StringOp>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="67" style="flightlog">
+      <StringOp op="friendly" subOp="velocity" style="friendly">
+        <CraftProperty property="Target.Velocity" style="prop-velocity" pos="-1332.53,-2441.619" />
+      </StringOp>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="68" style="flightlog">
+      <CraftProperty property="Orbit.Apoapsis" style="prop-orbit" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="69" style="flightlog">
+      <CraftProperty property="Orbit.Periapsis" style="prop-orbit" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="70" style="flightlog">
+      <CraftProperty property="Orbit.TimeToApoapsis" style="prop-orbit" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="71" style="flightlog">
+      <CraftProperty property="Orbit.Eccentricity" style="prop-orbit" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="72" style="flightlog">
+      <CraftProperty property="Orbit.Inclination" style="prop-orbit" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="73" style="flightlog">
+      <CraftProperty property="Orbit.Period" style="prop-orbit" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="74" style="flightlog">
+      <CraftProperty property="Atmosphere.AirDensity" style="prop-atmosphere" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="75" style="flightlog">
+      <CraftProperty property="Atmosphere.AirPressure" style="prop-atmosphere" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="76" style="flightlog">
+      <CraftProperty property="Atmosphere.SpeedOfSound" style="prop-atmosphere" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="77" style="flightlog">
+      <CraftProperty property="Atmosphere.Temperature" style="prop-atmosphere" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="78" style="flightlog">
+      <CraftProperty property="Performance.CurrentEngineThrust" style="prop-performance" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="79" style="flightlog">
+      <CraftProperty property="Performance.Mass" style="prop-performance" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="80" style="flightlog">
+      <CraftProperty property="Performance.DryMass" style="prop-performance" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="81" style="flightlog">
+      <CraftProperty property="Performance.FuelMass" style="prop-performance" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="82" style="flightlog">
+      <CraftProperty property="Performance.MaxActiveEngineThrust" style="prop-performance" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="83" style="flightlog">
+      <CraftProperty property="Performance.TWR" style="prop-performance" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="84" style="flightlog">
+      <CraftProperty property="Fuel.Battery" style="prop-fuel" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="85" style="flightlog">
+      <CraftProperty property="Fuel.FuelInStage" style="prop-fuel" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="86" style="flightlog">
+      <CraftProperty property="Fuel.Mono" style="prop-fuel" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="87" style="flightlog">
+      <CraftProperty property="Fuel.AllStages" style="prop-fuel" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="88" style="flightlog">
+      <CraftProperty property="Nav.Position" style="prop-nav" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="89" style="flightlog">
+      <CraftProperty property="Target.Position" style="prop-nav" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="90" style="flightlog">
+      <CraftProperty property="Nav.CraftHeading" style="prop-nav" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="91" style="flightlog">
+      <CraftProperty property="Nav.Pitch" style="prop-nav" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="92" style="flightlog">
+      <CraftProperty property="Nav.BankAngle" style="prop-nav" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="93" style="flightlog">
+      <CraftProperty property="Nav.AngleOfAttack" style="prop-nav" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="94" style="flightlog">
+      <CraftProperty property="Nav.SideSlip" style="prop-nav" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="95" style="flightlog">
+      <CraftProperty property="Nav.North" style="prop-nav" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="96" style="flightlog">
+      <CraftProperty property="Nav.East" style="prop-nav" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="97" style="flightlog">
+      <CraftProperty property="Nav.CraftDirection" style="prop-nav" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="98" style="flightlog">
+      <CraftProperty property="Nav.CraftRight" style="prop-nav" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="99" style="flightlog">
+      <CraftProperty property="Nav.CraftUp" style="prop-nav" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="100" style="flightlog">
+      <CraftProperty property="Vel.SurfaceVelocity" style="prop-velocity" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="101" style="flightlog">
+      <CraftProperty property="Vel.OrbitVelocity" style="prop-velocity" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="102" style="flightlog">
+      <CraftProperty property="Target.Velocity" style="prop-velocity" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="103" style="flightlog">
+      <CraftProperty property="Vel.Gravity" style="prop-velocity" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="104" style="flightlog">
+      <CraftProperty property="Vel.Drag" style="prop-velocity" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="105" style="flightlog">
+      <CraftProperty property="Vel.Acceleration" style="prop-velocity" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="106" style="flightlog">
+      <CraftProperty property="Vel.AngularVelocity" style="prop-velocity" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="107" style="flightlog">
+      <CraftProperty property="Vel.LateralSurfaceVelocity" style="prop-velocity" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="108" style="flightlog">
+      <CraftProperty property="Vel.VerticalSurfaceVelocity" style="prop-velocity" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="109" style="flightlog">
+      <CraftProperty property="Vel.MachNumber" style="prop-velocity" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="110" style="flightlog">
+      <CraftProperty property="Input.Roll" style="prop-input" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="111" style="flightlog">
+      <CraftProperty property="Input.Pitch" style="prop-input" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="112" style="flightlog">
+      <CraftProperty property="Input.Yaw" style="prop-input" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="113" style="flightlog">
+      <CraftProperty property="Input.Throttle" style="prop-input" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="114" style="flightlog">
+      <CraftProperty property="Input.Brake" style="prop-input" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="115" style="flightlog">
+      <CraftProperty property="Input.Slider1" style="prop-input" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="116" style="flightlog">
+      <CraftProperty property="Input.Slider2" style="prop-input" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="117" style="flightlog">
+      <CraftProperty property="Input.Slider3" style="prop-input" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="118" style="flightlog">
+      <CraftProperty property="Input.Slider4" style="prop-input" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="119" style="flightlog">
+      <CraftProperty property="Input.TranslateForward" style="prop-input" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="120" style="flightlog">
+      <CraftProperty property="Input.TranslateRight" style="prop-input" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="121" style="flightlog">
+      <CraftProperty property="Input.TranslateUp" style="prop-input" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="122" style="flightlog">
+      <CraftProperty property="Input.TranslationMode" style="prop-input" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="123" style="flightlog">
+      <CraftProperty property="Misc.Stage" style="prop-misc" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="124" style="flightlog">
+      <CraftProperty property="Misc.NumStages" style="prop-misc" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="125" style="flightlog">
+      <CraftProperty property="Misc.Grounded" style="prop-misc" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="126" style="flightlog">
+      <CraftProperty property="Misc.SolarRadiation" style="prop-misc" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="127" style="flightlog">
+      <CraftProperty property="Misc.CameraPosition" style="prop-misc" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="128" style="flightlog">
+      <CraftProperty property="Misc.CameraPointing" style="prop-misc" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="129" style="flightlog">
+      <CraftProperty property="Misc.CameraUp" style="prop-misc" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="130" style="flightlog">
+      <CraftProperty property="Misc.PidPitch" style="prop-misc" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="131" style="flightlog">
+      <CraftProperty property="Misc.PidRoll" style="prop-misc" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="132" style="flightlog">
+      <CraftProperty property="Time.FrameDeltaTime" style="prop-time" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="133" style="flightlog">
+      <CraftProperty property="Time.TimeSinceLaunch" style="prop-time" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="134" style="flightlog">
+      <CraftProperty property="Time.TotalTime" style="prop-time" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="135" style="flightlog">
+      <CraftProperty property="Time.WarpAmount" style="prop-time" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="136" style="flightlog">
+      <CraftProperty property="Time.RealTime" style="prop-time" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="137" style="flightlog">
+      <CraftProperty property="Name.Craft" style="prop-name" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="138" style="flightlog">
+      <CraftProperty property="Orbit.Planet" style="prop-name" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="139" style="flightlog">
+      <CraftProperty property="Target.Name" style="prop-name" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="140" style="flightlog">
+      <CraftProperty property="Target.Planet" style="prop-name" />
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="141" style="flightlog">
+      <ActivationGroup style="activation-group">
+        <Constant number="1" />
+      </ActivationGroup>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="142" style="flightlog">
+      <Planet op="toLatLongAgl" style="planet-to-lat-long-agl">
+        <Variable list="false" local="false" variableName="Var1" />
+      </Planet>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="143" style="flightlog">
+      <Planet op="toLatLongAsl" style="planet-to-lat-long-asl">
+        <Variable list="false" local="false" variableName="Var1" />
+      </Planet>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="144" style="flightlog">
+      <Planet op="toPosition" style="planet-to-position">
+        <Variable list="false" local="false" variableName="Var1" />
+      </Planet>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="145" style="flightlog">
+      <Planet op="toPositionOverSea" style="planet-to-position-asl">
+        <Variable list="false" local="false" variableName="Var1" />
+      </Planet>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="146" style="flightlog">
+      <CraftProperty property="Terrain.Height" style="terrain-query">
+        <Planet op="toLatLongAsl" style="planet-to-lat-long-asl">
+          <Variable list="false" local="false" variableName="Var1" />
+        </Planet>
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="147" style="flightlog">
+      <CraftProperty property="Terrain.Color" style="terrain-query">
+        <Planet op="toLatLongAsl" style="planet-to-lat-long-asl">
+          <Variable list="false" local="false" variableName="Var1" />
+        </Planet>
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="148" style="flightlog">
+      <CraftProperty property="Raycast" style="raycast-query">
+        <Variable list="false" local="false" variableName="Var0" />
+        <Variable list="false" local="false" variableName="Var1" />
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <SetVariable id="149" style="set-variable">
+      <Variable list="false" local="false" variableName="craftname" />
+      <CraftProperty property="Name.Craft" style="prop-name" />
+    </SetVariable>
+    <SetVariable id="150" style="set-variable">
+      <Variable list="false" local="false" variableName="planetname" />
+      <CraftProperty property="Craft.Planet" style="craft">
+        <CraftProperty property="Craft.NameToID" style="craft-id">
+          <Variable list="false" local="false" variableName="craftname" />
+        </CraftProperty>
+      </CraftProperty>
+    </SetVariable>
+    <LogFlight id="151" style="flightlog">
+      <Planet op="mass" style="planet">
+        <CraftProperty property="Craft.Planet" style="craft">
+          <CraftProperty property="Craft.NameToID" style="craft-id">
+            <Variable list="false" local="false" variableName="craftname" />
+          </CraftProperty>
+        </CraftProperty>
+      </Planet>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="152" style="flightlog">
+      <Planet op="mass" style="planet">
+        <Variable list="false" local="false" variableName="planetname" />
+      </Planet>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="153" style="flightlog">
+      <Planet op="radius" style="planet">
+        <Variable list="false" local="false" variableName="planetname" />
+      </Planet>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="154" style="flightlog">
+      <Planet op="atmosphereHeight" style="planet">
+        <Variable list="false" local="false" variableName="planetname" />
+      </Planet>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="155" style="flightlog">
+      <Planet op="soiradius" style="planet">
+        <Variable list="false" local="false" variableName="planetname" />
+      </Planet>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="156" style="flightlog">
+      <Planet op="solarPosition" style="planet">
+        <Constant text="Droo" />
+      </Planet>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="157" style="flightlog">
+      <Planet op="childPlanets" style="planet">
+        <Constant text="Droo" />
+      </Planet>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="158" style="flightlog">
+      <CraftProperty property="Part.IDToName" style="part">
+        <Constant number="0" />
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="159" style="flightlog">
+      <CraftProperty property="Part.Mass" style="part">
+        <Constant number="0" />
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="160" style="flightlog">
+      <CraftProperty property="Part.DryMass" style="part">
+        <Constant number="0" />
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="161" style="flightlog">
+      <CraftProperty property="Part.WetMass" style="part">
+        <Constant number="0" />
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="162" style="flightlog">
+      <CraftProperty property="Part.Activated" style="part">
+        <Constant number="0" />
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="163" style="flightlog">
+      <CraftProperty property="Part.PartType" style="part">
+        <Constant number="0" />
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="164" style="flightlog">
+      <CraftProperty property="Part.Position" style="part">
+        <Constant number="0" />
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="165" style="flightlog">
+      <CraftProperty property="Part.Temperature" style="part">
+        <Constant number="0" />
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="166" style="flightlog">
+      <CraftProperty property="Part.Drag" style="part">
+        <Constant number="0" />
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="167" style="flightlog">
+      <CraftProperty property="Part.ThisID" style="part">
+        <Constant number="0" />
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="168" style="flightlog">
+      <CraftProperty property="Part.MinID" style="part">
+        <Constant number="0" />
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="169" style="flightlog">
+      <CraftProperty property="Part.MaxID" style="part">
+        <Constant number="0" />
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="170" style="flightlog">
+      <CraftProperty property="Part.UnderWater" style="part">
+        <Constant number="0" />
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="171" style="flightlog">
+      <CraftProperty property="Part.NameToID" style="part-id">
+        <Constant text="Fuel Tank" />
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="172" style="flightlog">
+      <CraftProperty property="Part.LocalToPci" style="part-transform">
+        <Constant number="0" />
+        <CraftProperty property="Part.PciToLocal" style="part-transform">
+          <Constant number="0" />
+          <Variable list="false" local="false" variableName="Var1" />
+        </CraftProperty>
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="173" style="flightlog">
+      <CraftProperty property="Craft.Altitude" style="craft">
+        <CraftProperty property="Craft.NameToID" style="craft-id">
+          <Variable list="false" local="false" variableName="craftname" />
+        </CraftProperty>
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="174" style="flightlog">
+      <CraftProperty property="Craft.Destroyed" style="craft">
+        <CraftProperty property="Craft.NameToID" style="craft-id">
+          <Variable list="false" local="false" variableName="craftname" />
+        </CraftProperty>
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="175" style="flightlog">
+      <CraftProperty property="Craft.Grounded" style="craft">
+        <CraftProperty property="Craft.NameToID" style="craft-id">
+          <Variable list="false" local="false" variableName="craftname" />
+        </CraftProperty>
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="176" style="flightlog">
+      <CraftProperty property="Craft.Mass" style="craft">
+        <CraftProperty property="Craft.NameToID" style="craft-id">
+          <Variable list="false" local="false" variableName="craftname" />
+        </CraftProperty>
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="177" style="flightlog">
+      <CraftProperty property="Craft.IDToName" style="craft">
+        <CraftProperty property="Craft.NameToID" style="craft-id">
+          <Variable list="false" local="false" variableName="craftname" />
+        </CraftProperty>
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="178" style="flightlog">
+      <CraftProperty property="Craft.PartCount" style="craft">
+        <CraftProperty property="Craft.NameToID" style="craft-id">
+          <Variable list="false" local="false" variableName="craftname" />
+        </CraftProperty>
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="179" style="flightlog">
+      <CraftProperty property="Craft.Planet" style="craft">
+        <CraftProperty property="Craft.NameToID" style="craft-id">
+          <Variable list="false" local="false" variableName="craftname" />
+        </CraftProperty>
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="180" style="flightlog">
+      <CraftProperty property="Craft.Position" style="craft">
+        <CraftProperty property="Craft.NameToID" style="craft-id">
+          <Variable list="false" local="false" variableName="craftname" />
+        </CraftProperty>
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="181" style="flightlog">
+      <CraftProperty property="Craft.Velocity" style="craft">
+        <CraftProperty property="Craft.NameToID" style="craft-id">
+          <Variable list="false" local="false" variableName="craftname" />
+        </CraftProperty>
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="182" style="flightlog">
+      <CraftProperty property="Craft.IsPlayer" style="craft">
+        <CraftProperty property="Craft.NameToID" style="craft-id">
+          <Variable list="false" local="false" variableName="craftname" />
+        </CraftProperty>
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="183" style="flightlog">
+      <CraftProperty property="Craft.BoundMin" style="craft">
+        <CraftProperty property="Craft.NameToID" style="craft-id">
+          <Variable list="false" local="false" variableName="craftname" />
+        </CraftProperty>
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="184" style="flightlog">
+      <CraftProperty property="Craft.BoundMax" style="craft">
+        <CraftProperty property="Craft.NameToID" style="craft-id">
+          <Variable list="false" local="false" variableName="craftname" />
+        </CraftProperty>
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="185" style="flightlog">
+      <CraftProperty property="Craft.Apoapsis" style="craft">
+        <CraftProperty property="Craft.NameToID" style="craft-id">
+          <Variable list="false" local="false" variableName="craftname" />
+        </CraftProperty>
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="186" style="flightlog">
+      <CraftProperty property="Craft.Periapsis" style="craft">
+        <CraftProperty property="Craft.NameToID" style="craft-id">
+          <Variable list="false" local="false" variableName="craftname" />
+        </CraftProperty>
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="187" style="flightlog">
+      <CraftProperty property="Craft.Period" style="craft">
+        <CraftProperty property="Craft.NameToID" style="craft-id">
+          <Variable list="false" local="false" variableName="craftname" />
+        </CraftProperty>
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="188" style="flightlog">
+      <CraftProperty property="Craft.ApoapsisTime" style="craft">
+        <CraftProperty property="Craft.NameToID" style="craft-id">
+          <Variable list="false" local="false" variableName="craftname" />
+        </CraftProperty>
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="189" style="flightlog">
+      <CraftProperty property="Craft.PeriapsisTime" style="craft">
+        <CraftProperty property="Craft.NameToID" style="craft-id">
+          <Variable list="false" local="false" variableName="craftname" />
+        </CraftProperty>
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="190" style="flightlog">
+      <CraftProperty property="Craft.Inclination" style="craft">
+        <CraftProperty property="Craft.NameToID" style="craft-id">
+          <Variable list="false" local="false" variableName="craftname" />
+        </CraftProperty>
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="191" style="flightlog">
+      <CraftProperty property="Craft.Eccentricity" style="craft">
+        <CraftProperty property="Craft.NameToID" style="craft-id">
+          <Variable list="false" local="false" variableName="craftname" />
+        </CraftProperty>
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="192" style="flightlog">
+      <CraftProperty property="Craft.MeanAnomaly" style="craft">
+        <CraftProperty property="Craft.NameToID" style="craft-id">
+          <Variable list="false" local="false" variableName="craftname" />
+        </CraftProperty>
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="193" style="flightlog">
+      <CraftProperty property="Craft.MeanMotion" style="craft">
+        <CraftProperty property="Craft.NameToID" style="craft-id">
+          <Variable list="false" local="false" variableName="craftname" />
+        </CraftProperty>
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="194" style="flightlog">
+      <CraftProperty property="Craft.PeriapsisArgument" style="craft">
+        <CraftProperty property="Craft.NameToID" style="craft-id">
+          <Variable list="false" local="false" variableName="craftname" />
+        </CraftProperty>
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="195" style="flightlog">
+      <CraftProperty property="Craft.RightAscension" style="craft">
+        <CraftProperty property="Craft.NameToID" style="craft-id">
+          <Variable list="false" local="false" variableName="craftname" />
+        </CraftProperty>
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="196" style="flightlog">
+      <CraftProperty property="Craft.TrueAnomaly" style="craft">
+        <CraftProperty property="Craft.NameToID" style="craft-id">
+          <Variable list="false" local="false" variableName="craftname" />
+        </CraftProperty>
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="197" style="flightlog">
+      <CraftProperty property="Craft.SemiMajorAxis" style="craft">
+        <CraftProperty property="Craft.NameToID" style="craft-id">
+          <Variable list="false" local="false" variableName="craftname" />
+        </CraftProperty>
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <LogFlight id="198" style="flightlog">
+      <CraftProperty property="Craft.SemiMinorAxis" style="craft">
+        <CraftProperty property="Craft.NameToID" style="craft-id">
+          <Variable list="false" local="false" variableName="craftname" />
+        </CraftProperty>
+      </CraftProperty>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <SetInput input="roll" id="199" style="set-input">
+      <Constant number="0" />
+    </SetInput>
+    <SetInput input="pitch" id="200" style="set-input">
+      <Constant number="0" />
+    </SetInput>
+    <SetInput input="yaw" id="201" style="set-input">
+      <Constant number="0" />
+    </SetInput>
+    <SetInput input="brake" id="202" style="set-input">
+      <Constant number="0" />
+    </SetInput>
+    <SetInput input="slider1" id="203" style="set-input">
+      <Constant number="0" />
+    </SetInput>
+    <SetInput input="slider2" id="204" style="set-input">
+      <Constant number="0" />
+    </SetInput>
+    <SetInput input="slider3" id="205" style="set-input">
+      <Constant number="0" />
+    </SetInput>
+    <SetInput input="slider4" id="206" style="set-input">
+      <Constant number="0" />
+    </SetInput>
+    <SetInput input="translateForward" id="207" style="set-input">
+      <Constant number="0" />
+    </SetInput>
+    <SetInput input="translateRight" id="208" style="set-input">
+      <Constant number="0" />
+    </SetInput>
+    <SetInput input="translateUp" id="209" style="set-input">
+      <Constant number="0" />
+    </SetInput>
+    <SetInput input="translationMode" id="210" style="set-input">
+      <Constant number="0" />
+    </SetInput>
+    <SetInput input="throttle" id="211" style="set-input">
+      <Constant number="0" />
+    </SetInput>
+    <SetInput input="throttle" id="212" style="set-input">
+      <Constant number="0" />
+    </SetInput>
+    <SetInput input="throttle" id="213" style="set-input">
+      <Constant number="0" />
+    </SetInput>
+    <SetInput input="throttle" id="214" style="set-input">
+      <Constant number="0" />
+    </SetInput>
+    <SetTargetHeading property="heading" id="215" style="set-heading">
+      <Constant text="90" />
+    </SetTargetHeading>
+    <SetTargetHeading property="pitch" id="216" style="set-heading">
+      <Constant text="90" />
+    </SetTargetHeading>
+    <SetTargetHeading property="pid-pitch" id="217" style="set-heading">
+      <CraftProperty property="Misc.PidPitch" style="prop-misc" />
+    </SetTargetHeading>
+    <SetTargetHeading property="pid-roll" id="218" style="set-heading">
+      <CraftProperty property="Misc.PidRoll" style="prop-misc" />
+    </SetTargetHeading>
+    <LockNavSphere indicatorType="Current" id="219" style="lock-nav-sphere" />
+    <LockNavSphere indicatorType="Vector" id="220" style="lock-nav-sphere-vector">
+      <BinaryOp op="-" style="op-sub">
+        <Vector style="vec">
+          <Constant number="0" />
+          <Constant number="0" />
+          <Constant number="0" />
+        </Vector>
+        <CraftProperty property="Vel.Gravity" style="prop-velocity" />
+      </BinaryOp>
+    </LockNavSphere>
+    <LockNavSphere indicatorType="None" id="221" style="lock-nav-sphere" />
+    <SetTimeMode mode="Normal" id="222" style="set-time-mode" />
+    <SetCameraProperty property="rotationX" id="223" style="set-camera">
+      <Constant text="0" />
+    </SetCameraProperty>
+    <SetCameraProperty property="rotationY" id="224" style="set-camera">
+      <Constant text="0" />
+    </SetCameraProperty>
+    <SetCameraProperty property="tilt" id="225" style="set-camera">
+      <Constant text="0" />
+    </SetCameraProperty>
+    <SetCameraProperty property="zoom" id="226" style="set-camera">
+      <Constant text="1" />
+    </SetCameraProperty>
+    <SetCameraProperty property="mode" id="227" style="set-camera">
+      <Constant text="Chase" />
+    </SetCameraProperty>
+    <SetCameraProperty property="modeIndex" id="228" style="set-camera">
+      <Constant text="1" />
+    </SetCameraProperty>
+    <SetActivationGroup id="229" style="set-ag">
+      <Constant number="1" />
+      <Constant style="false" bool="false" />
+    </SetActivationGroup>
+    <SetCraftProperty property="Part.SetActivated" id="230" style="set-part">
+      <Constant number="0" />
+      <Constant style="true" bool="true" />
+    </SetCraftProperty>
+    <SetCraftProperty property="Part.SetFocused" id="231" style="set-part">
+      <Constant number="0" />
+      <Constant style="true" bool="true" />
+    </SetCraftProperty>
+    <SetCraftProperty property="Part.SetName" id="232" style="set-part">
+      <Constant number="0" />
+      <Constant text="Space Capsule" />
+    </SetCraftProperty>
+    <SetCraftProperty property="Part.SetExplode" id="233" style="set-part">
+      <Constant text="1" />
+      <Constant text="1" />
+    </SetCraftProperty>
+    <SetCraftProperty property="Part.FuelTransfer" id="234" style="set-part">
+      <Constant number="0" />
+      <Constant style="false" bool="false" />
+    </SetCraftProperty>
+    <SwitchCraft id="235" style="switch-craft">
+      <CraftProperty property="Craft.NameToID" style="craft-id">
+        <Variable list="false" local="false" variableName="craftname" />
+      </CraftProperty>
+    </SwitchCraft>
+    <SetCraftProperty property="Sound.Beep" id="236" style="play-beep">
+      <CraftProperty property="Sound.Frequency" style="note-frequency">
+        <Constant text="C#" />
+        <Constant text="3" />
+      </CraftProperty>
+      <Constant number="1" />
+      <Constant text="1" />
+    </SetCraftProperty>
+    <SetVariable id="237" style="list-init">
+      <Variable list="true" local="false" variableName="MyList" />
+      <ListOp op="create" style="list-create">
+        <Constant text="a,b,c" />
+      </ListOp>
+    </SetVariable>
+    <SetList op="set" id="238" style="list-set">
+      <Variable list="true" local="false" variableName="MyList" />
+      <Constant text="A" />
+      <Constant number="1" />
+    </SetList>
+    <SetList op="add" id="239" style="list-add">
+      <Variable list="true" local="false" variableName="MyList" />
+      <Constant text="d" />
+    </SetList>
+    <SetList op="insert" id="240" style="list-insert">
+      <Variable list="true" local="false" variableName="MyList" />
+      <Constant text="z" />
+      <Constant number="1" />
+    </SetList>
+    <SetList op="remove" id="241" style="list-remove">
+      <Variable list="true" local="false" variableName="MyList" />
+      <ListOp op="length" style="list-length">
+        <Variable list="true" local="false" variableName="MyList" />
+      </ListOp>
+    </SetList>
+    <SetList op="sort" id="242" style="list-sort">
+      <Variable list="true" local="false" variableName="MyList" />
+    </SetList>
+    <SetList op="reverse" id="243" style="list-reverse">
+      <Variable list="true" local="false" variableName="MyList" />
+    </SetList>
+    <LogFlight id="244" style="flightlog">
+      <ListOp op="index" style="list-index">
+        <Variable list="true" local="false" variableName="MyList" />
+        <Constant text="z" />
+      </ListOp>
+      <Constant style="false" bool="false" />
+    </LogFlight>
+    <SetList op="clear" id="245" style="list-clear">
+      <Variable list="true" local="false" variableName="MyList" />
+    </SetList>
+    <BroadcastMessage global="false" local="true" id="246" style="broadcast-msg">
+      <Constant text="message" />
+      <Constant text="foo" />
+    </BroadcastMessage>
+    <BroadcastMessage global="false" local="false" id="247" style="broadcast-msg-craft">
+      <Constant text="message" />
+      <Constant text="bar" />
+    </BroadcastMessage>
+    <BroadcastMessage global="true" local="true" id="248" style="broadcast-msg-all-crafts">
+      <Constant text="message" />
+      <Constant text="bat" />
+    </BroadcastMessage>
+    <For var="i" id="249" style="for">
+      <Constant number="1" />
+      <ListOp op="length" style="list-length">
+        <Variable list="true" local="false" variableName="MyList" />
+      </ListOp>
+      <Constant number="1" />
+      <Instructions>
+        <LogFlight id="250" style="flightlog">
+          <ListOp op="get" style="list-get">
+            <Variable list="true" local="false" variableName="MyList" />
+            <Variable list="false" local="true" variableName="i" />
+          </ListOp>
+          <Constant style="false" bool="false" />
+        </LogFlight>
+      </Instructions>
+    </For>
+    <CallCustomInstruction call="MyCustInstr" id="251" style="call-custom-instruction">
+      <Constant text="foo" />
+      <Constant text="bar" />
+    </CallCustomInstruction>
+    <WaitUntil id="252" style="wait-until">
+      <Constant style="false" bool="false" />
+    </WaitUntil>
+  </Instructions>
+  <Expressions>
+    <CustomExpression callFormat="TimeSinceLaunch" format="TimeSinceLaunch return (0)" name="TimeSinceLaunch" style="custom-expression" pos="-158.1389,75.789">
+      <CraftProperty property="Time.TimeSinceLaunch" style="prop-time" />
+    </CustomExpression>
+  </Expressions>
+</Program>
